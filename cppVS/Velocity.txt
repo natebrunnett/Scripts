@@ -1,0 +1,93 @@
+class Game
+{
+private:
+	RenderWindow* window;
+	VideoMode videoMode;
+	Event ev;
+
+	class Particle : public RectangleShape
+	{
+	public:
+
+
+
+		int random(int min, int max) //range : [min, max]
+		{
+			static bool first = true;
+			if (first)
+			{
+			srand(time(NULL)); //seeding for the first time only!
+			first = false;
+			}
+			return min + rand() % ((max + 1) - min);
+		}
+
+		void setVelocityX(float x) { velocityX = x; };
+
+		void setVelocityY(float y) { velocityY = y; };
+
+		void setGravityX(float x) { gravityX = x; };
+
+		void setGravityY(float y) { gravityY = y; };
+
+		void setMaxX(float x) { maxX = x; };
+
+		void setMaxY(float y) { maxY = y; };
+		
+		float getVelocityX(){ return velocityX; };
+
+		float getVelocityY() { return velocityY; };
+
+		float getGravityX() { return gravityX; };
+
+		float getGravityY() { return gravityY; };
+
+		float getMaxY() { return maxY; };
+
+		float getMaxX() { return maxX; };
+
+		Particle()
+		{
+			gravityX = .1; //random gravity direction;
+			gravityY = .1;
+			velocityX = random(-10, 10); //random directional speed;
+			velocityY = random(-10, 10);
+		}
+	private:
+
+		float maxY, maxX;
+		float gravityX; //random gravity direction;
+		float gravityY;
+		float velocityX; //random directional speed;
+		float velocityY;
+
+	};
+
+	//variables;
+	std::vector<Particle> Particles;
+	Particle player;
+	RectangleShape foe, foe2;
+	FloatRect foeBounds, foeBounds2, playerBounds;
+
+	void initVariables();
+	void initWindow();
+public:
+	Game();
+	virtual ~Game();
+
+	//accessor
+	const bool running() const;
+	
+	//functions
+	void pollEvents();
+	int random(int min, int max);
+	
+	void update();
+	void updateShapes();
+	Vector2f animateParticle(Particle &p);
+	void renderShapes(sf::RenderTarget& target);
+	void render();
+
+	
+
+};

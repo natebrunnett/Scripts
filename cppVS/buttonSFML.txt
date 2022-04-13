@@ -1,0 +1,4 @@
+Button Mapping
+ if (Mouse::isButtonPressed(Mouse::Left)
+    && (this->mouse.x >= 521 && this->mouse.x <= 553)
+    && (this->mouse.y >= 22 && this->mouse.y <= 50))

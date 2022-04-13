@@ -1,0 +1,17 @@
+#include <iostream>
+#include <chrono>
+#include <ctime>   
+
+using namespace std;
+
+int main() {
+      auto end = chrono::system_clock::now();
+      time_t base = chrono::system_clock::to_time_t(end);
+  for(int i = 0; i < 365; ++i) {
+    struct tm* tm = localtime(&base);
+    tm->tm_mday += i;
+    time_t next = mktime(tm);
+    std::cout << ctime(&next);
+  }
+    return 0;
+    }

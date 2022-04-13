@@ -1,0 +1,5 @@
+Executing commands on Command Prompts
+system("start .");
+
+Strings:
+ system(("\"\"cppVS/" + string + "\"\"").c_str());

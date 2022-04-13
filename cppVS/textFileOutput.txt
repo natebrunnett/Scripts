@@ -1,0 +1,113 @@
+$ cat lab2_NJB.cpp
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <vector>
+
+/*
+Lab 2
+Nathaniel Joseph Brunnett
+File reading and writing with arrays, + reverse loop
+*/
+
+/*
+user provides full path of file to be read
+user provides full path of file to be written
+declare an array string of 1024
+read file and store each word into array
+sort array in reverse order and store output in a file
+also print reversed array to screen
+put a pause before the end of program
+
+*/
+
+using namespace std;
+
+//input
+string myArray[1024];
+string word;
+int index = -1;
+string tempVal;
+string fileRead;
+string newFile;
+ifstream file1;
+string line;
+
+ofstream outputFile;
+
+void input()
+{
+        cout << "Enter full path of file to be read: " << endl;
+        cin >> fileRead;  //ex "files/theBestInputFile.txt"
+
+        file1.open(fileRead);
+
+        if (file1.fail())
+        {
+                cout << "failed to open " << fileRead << endl;
+        }
+
+        while (!file1.eof())
+        {
+                index++;
+                file1 >> word;
+                myArray[index] = word;
+                //cout << "myArray[" << index << "] = " << myArray[index] << endl;
+                //cout << "index =" << index << endl;
+        }
+
+        file1.close();
+}
+
+void output()
+{
+
+        cout << "Enter full path of file to be written: " << endl;
+        cin >> newFile;
+
+        outputFile.open(newFile);
+
+        if (outputFile.fail())
+        {
+                cout << "failed to create a saved file" << endl;
+        }
+
+        size_t totalSize = index + 1; // length of myArray
+
+        // Reverse array's elements
+
+        for (int i = 0; i < (totalSize / 2); ++i) {
+                tempVal = myArray[i];                        // Temp for swap
+                myArray[i] = myArray[totalSize - 1 - i]; // First part of swap
+                myArray[totalSize - 1 - i] = tempVal;     // Second complete
+        }
+
+        //write reversed array to outputfile
+        //print reversed array to screen
+
+        cout << endl;
+        cout << endl;
+
+
+        cout << "File read words in reverse order: " << endl;
+
+        for (int i = 0; i < totalSize; ++i)
+        {
+                outputFile << myArray[i] << " ";
+                cout << myArray[i] << " ";
+        }
+
+        cout << endl;
+        cout << endl;
+
+        outputFile.close();
+}
+
+int main()
+{
+        input();
+        output();
+        system("pause");
+        return 0;
+}
+

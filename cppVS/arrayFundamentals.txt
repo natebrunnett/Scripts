@@ -1,0 +1,17 @@
+int size, *array;   //default size to 16, allocate memory for array
+ 
+cout << "How many? ";
+cin >> size;
+ 
+array = new int[size];  //creates array at memory location of type int
+ 
+for(int x = 0; x < size; x ++) {
+    cout << "Enter number " << x << ": ";
+    cin >> array[x];
+}
+ 
+for(int x = 0; x < size; x ++) {
+    cout << array[x] << endl;
+}
+ 
+delete [] array;  //method for deleting an array in memory

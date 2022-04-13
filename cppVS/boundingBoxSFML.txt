@@ -1,0 +1,9 @@
+// get the bounding box of the entity
+sf::FloatRect boundingBox = entity.getGlobalBounds();
+
+// check collision with a point
+sf::Vector2f point = ...;
+if (boundingBox.contains(point))
+{
+    // collision!
+}

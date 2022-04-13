@@ -1,0 +1,4 @@
+mouse.x = Mouse::getPosition(*this->window).x;
+mouse.y = Mouse::getPosition(*this->window).y;
+std::cout << "mouse.x = " << mouse.x << std::endl;
+std::cout << "mouse.y = " << mouse.y << std::endl;

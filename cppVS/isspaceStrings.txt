@@ -1,0 +1,12 @@
+void remove_spaces(string& line)
+{size_t len = line.length(); size_t i = 0;
+ while (i < len)
+ {if (isspace(line[i]))
+  { for (size_t j = i + 1; j <= len; j++)
+     { line[j - 1] = line[j];}
+   }else i++;
+    }
+  //remove the spaces and move the digits to the left
+        //and put '\0' after the last char
+        //...
+}

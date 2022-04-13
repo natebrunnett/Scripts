@@ -1,0 +1,9 @@
+const float maxY = 50f;
+const sf::vector2f gravity(0.f, 5.f);
+sf::vector2f velocity(2.f, 5.f);
+
+if(playerInAir)
+{
+    player.move(velocity);
+    if(velocity.y < maxY) velocity += gravity;
+}

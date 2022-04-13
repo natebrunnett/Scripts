@@ -1,0 +1,25 @@
+#include <fstream>
+using namespace std;
+
+int main() {
+
+	string line;
+	ifstream myfile("example.txt");
+	if (myfile.is_open())
+	{
+		while (getline(myfile, line))
+		{
+		cout << line << '\n';
+		//Add line to vector to store data for later use
+		}
+		myfile.close();
+	}
+
+	else cout << "Unable to open file";
+
+	ofstream outputfile;
+	outputfile.open("example.txt");
+	outputfile << "Writing this to a file.\n";
+	outputfile.close();
+	return 0;
+}
